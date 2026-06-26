@@ -1,0 +1,65 @@
+{
+  "name": "ado-var-inspector",
+  "displayName": "ADO Variable Inspector",
+  "description": "Inspect and resolve Azure DevOps YAML pipeline variables across environments",
+  "version": "0.1.0",
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Other"],
+  "keywords": ["azure devops", "yaml", "pipeline", "variables"],
+  "activationEvents": [
+    "onLanguage:yaml",
+    "onCommand:adoVarInspector.openPanel"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "adoVarInspector.openPanel",
+        "title": "ADO: Inspect Variables",
+        "icon": "$(table)"
+      },
+      {
+        "command": "adoVarInspector.inspectAtCursor",
+        "title": "ADO: Inspect Variable at Cursor"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "adoVarInspector.openPanel",
+          "when": "resourceExtname == .yml || resourceExtname == .yaml",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "adoVarInspector.inspectAtCursor",
+          "when": "resourceExtname == .yml || resourceExtname == .yaml",
+          "group": "ado"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "adoVarInspector.openPanel",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v",
+        "when": "resourceExtname == .yml || resourceExtname == .yaml"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
