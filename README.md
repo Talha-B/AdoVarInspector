@@ -1,13 +1,8 @@
-# AdoVarInspector
-VS Code extension that resolves Azure DevOps pipeline variables across all environments - no more mentally tracing ${{ if }} chains
-
 # ADO Variable Inspector
 
 > Stop mentally tracing `${{ if eq(variables['env'], 'prod') }}` chains.
 
 A VS Code extension that parses your Azure DevOps pipeline YAML and shows every variable resolved across all environments and stages — side by side, in a live table.
-
-![ADO Variable Inspector](https://raw.githubusercontent.com/your-username/ado-var-inspector/main/media/preview.png)
 
 ---
 
